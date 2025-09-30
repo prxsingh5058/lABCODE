@@ -1,0 +1,32 @@
+// Base class (Grandparent)
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating...");
+    }
+}
+
+// Derived class (Parent)
+class Mammal extends Animal {
+    void walk() {
+        System.out.println("Mammal is walking...");
+    }
+}
+
+// Derived class (Child)
+class Dog extends Mammal {
+    void bark() {
+        System.out.println("Dog is barking...");
+    }
+}
+
+public class MultiLevelInheritanceDemo {
+    public static void main(String[] args) {
+        // Creating object of child class
+        Dog dog = new Dog();
+
+        // Dog can access methods of all parent classes
+        dog.eat();   // from Animal
+        dog.walk();  // from Mammal
+        dog.bark();  // from Dog
+    }
+}
