@@ -1,0 +1,63 @@
+// Abstract class
+abstract class Shape {
+    int dim1, dim2;
+
+    Shape(int d1, int d2) {
+        dim1 = d1;
+        dim2 = d2;
+    }
+
+    abstract void printArea();
+}
+
+// Rectangle class
+class Rectangle extends Shape {
+    Rectangle(int length, int breadth) {
+        super(length, breadth);
+    }
+
+    void printArea() {
+        int area = dim1 * dim2;
+        System.out.println("Area of Rectangle: " + area);
+    }
+}
+
+// Triangle class
+class Triangle extends Shape {
+    Triangle(int base, int height) {
+        super(base, height);
+    }
+
+    void printArea() {
+        double area = 0.5 * dim1 * dim2;
+        System.out.println("Area of Triangle: " + area);
+    }
+}
+
+// Circle class
+class Circle extends Shape {
+    Circle(int radius) {
+        super(radius, 0); // second parameter not used
+    }
+
+    void printArea() {
+        double area = Math.PI * dim1 * dim1;
+        System.out.println("Area of Circle: " + area);
+    }
+}
+
+// Main class
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Shape s;
+
+        s = new Rectangle(10, 5);
+        s.printArea();
+
+        s = new Triangle(10, 5);
+        s.printArea();
+
+        s = new Circle(7);
+        s.printArea();
+    }
+}
