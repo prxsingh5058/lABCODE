@@ -1,0 +1,25 @@
+package exceptionhandling;
+
+import java.util.Scanner;
+
+public class NameClass {
+	public static void main (String args[]) {
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter your name");
+		String input = scanner.nextLine();
+		try {
+			checkName(input);
+			System.out.println("input matches amit");
+		}
+		catch (Exception e) {
+			System.out.println();
+		}
+	}
+
+	private static void checkName(String input) throws Exception {
+		// TODO Auto-generated method stub
+		if(!input.equals("Amit")) {
+			throw new Exception ("Exception: Name is not Amit");
+		}
+	}
