@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class ReplaceDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input section
+        System.out.print("Enter a four-digit number (1000–9999): ");
+        int num = sc.nextInt();
+
+        System.out.print("Enter a digit (0–9): ");
+        int d = sc.nextInt();
+
+        System.out.print("Enter a character: ");
+        char ch = sc.next().charAt(0);
+
+        // Extract digits using division and modulus
+        int thousands = num / 1000;
+        int hundreds  = (num / 100) % 10;
+        int tens      = (num / 10) % 10;
+        int ones      = num % 10;
+
+        // Replace second and last digits
+        hundreds = d;
+        ones = d;
+
+        // Form the new number
+        int newNum = thousands * 1000 + hundreds * 100 + tens * 10 + ones;
+
+        // Get preceding character
+        char prevChar = (char) (ch - 1);
+
+        // Display result
+        System.out.println("\nOriginal number: " + num);
+        System.out.println("Modified number: " + newNum);
+        System.out.println("Character before '" + ch + "' is '" + prevChar + "'");
+        
+        sc.close();
+    }
+}
