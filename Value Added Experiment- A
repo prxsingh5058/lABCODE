@@ -1,0 +1,109 @@
+class Employee {
+    String name;
+    String address;
+    double salary;
+    String jobTitle;
+
+    Employee(String name, String address, double salary, String jobTitle) {
+        this.name = name;
+        this.address = address;
+        this.salary = salary;
+        this.jobTitle = jobTitle;
+    }
+
+    
+    double calculateBonus() {
+        return salary * 0.05; // Default 5% bonus
+    }
+
+    // generate performance report
+    void generatePerformanceReport() {
+        System.out.println(jobTitle + " " + name + " has met performance expectations.");
+    }
+
+   
+    void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Job Title: " + jobTitle);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+class Manager extends Employee {
+    Manager(String name, String address, double salary) {
+        super(name, address, salary, "Manager");
+    }
+
+    @Override
+    double calculateBonus() {
+        return salary * 0.15; // Managers get 15% bonus
+    }
+
+    void manageProjects() {
+        System.out.println(name + " is managing company projects.");
+    }
+
+    @Override
+    void generatePerformanceReport() {
+        System.out.println("Manager " + name + " has exceeded performance targets!");
+    }
+}
+
+
+class Developer extends Employee {
+    Developer(String name, String address, double salary) {
+        super(name, address, salary, "Developer");
+    }
+
+    @Override
+    double calculateBonus() {
+        return salary * 0.10; // Developers get 10% bonus
+    }
+
+    void manageProjects() {
+        System.out.println(name + " is developing and maintaining applications.");
+    }
+}
+
+class Programmer extends Employee {
+    Programmer(String name, String address, double salary) {
+        super(name, address, salary, "Programmer");
+    }
+
+    @Override
+    double calculateBonus() {
+        return salary * 0.08; // Programmers get 8% bonus
+    }
+
+    void manageProjects() {
+        System.out.println(name + " is coding and debugging software modules.");
+    }
+}
+
+public class Company {
+    public static void main(String[] args) {
+        Manager m = new Manager("Alice", "Delhi", 80000);
+        Developer d = new Developer("Bob", "Mumbai", 60000);
+        Programmer p = new Programmer("Charlie", "Pune", 50000);
+
+        m.displayInfo();
+        System.out.println("Bonus: " + m.calculateBonus());
+        m.manageProjects();
+        m.generatePerformanceReport();
+
+        System.out.println("\n-----------------------\n");
+
+        d.displayInfo();
+        System.out.println("Bonus: " + d.calculateBonus());
+        d.manageProjects();
+        d.generatePerformanceReport();
+
+        System.out.println("\n-----------------------\n");
+
+        p.displayInfo();
+        System.out.println("Bonus: " + p.calculateBonus());
+        p.manageProjects();
+        p.generatePerformanceReport();
+    }
+}
