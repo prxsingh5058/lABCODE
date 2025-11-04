@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+class HotelBooking {
+    String location;
+    String viewType;
+    int totalMembers;
+    int children;
+    double baseCost;
+
+    // Constructor
+    HotelBooking(String location, String viewType, int totalMembers, int children) {
+        this.location = location;
+        this.viewType = viewType;
+        this.totalMembers = totalMembers;
+        this.children = children;
+    }
+
+    // Calculate base cost based on location and view
+    double calculateBaseCost() {
+        switch (location.toLowerCase()) {
+            case "mumbai":
+                baseCost = viewType.equalsIgnoreCase("lake") ? 4000 : 3500;
+                break;
+            case "shimla":
+                baseCost = viewType.equalsIgnoreCase("mountain") ? 3000 : 2500;
+                break;
+            default:
+                baseCost = 2000;
+                break;
+        }
+        return baseCost;
+    }
+
+    // Calculate total cost considering number of adults and children
+    double calculateTotalCost() {
+        int adults = totalMembers - children;
+        if (totalMembers > 4) {
+            System.out.println("⚠ Maximum 4 people allowed per room! Splitting cost accordingly...");
+        }
+
+        double totalCost = (adults * calculateBaseCost()) + (children * (calculateBaseCost() * 0.5));
+        return totalCost;
+    }
+
+    // Display booking details
+    void displayBooking() {
+        System.out.println("\n--- Booking Summary ---");
+        System.out.println("Location: " + location);
+        System.out.println("Room View: " + viewType);
+        System.out.println("Total Members: " + totalMembers);
+        System.out.println("Children: " + children);
+        System.out.println("Total Cost: ₹" + calculateTotalCost());
+        System.out.println("------------------------");
+    }
+}
+
+// Main class
+public class HotelSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String change;
+
+        do {
+            System.out.println("🏨 Welcome to Family Hotel Booking System 🏨");
+
+            System.out.print("Enter Location (Mumbai/Shimla): ");
+            String location = sc.nextLine();
+
+            System.out.print("Enter View Type (Lake/Pool/Mountain): ");
+            String viewType = sc.nextLine();
+
+            System.out.print("Enter total number of family members: ");
+            int totalMembers = sc.nextInt();
+
+            System.out.print("Enter number of children (below 12 years): ");
+            int children = sc.nextInt();
+            sc.nextLine(); // consume newline
+
+            HotelBooking booking = new HotelBooking(location, viewType, totalMembers, children);
+            booking.displayBooking();
+
+            System.out.print("\nWould you like to change your location and rebook? (yes/no): ");
+            change = sc.nextLine();
+
+        } while (change.equalsIgnoreCase("yes"));
+
+        System.out.println("\n✅ Thank you for booking with us! Have a great trip!");
+        sc.close();
+    }
+}
