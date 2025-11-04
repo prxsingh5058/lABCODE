@@ -1,0 +1,53 @@
+package first;
+
+public class AccountInfo {
+	int id;
+	String name;
+	double accountNumber;
+	float amount;
+	public int getID() {
+		return id;
+	}
+	public void setID(int id) {
+		this.id = id;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(double accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public float getAmount() {
+		return amount;
+	}
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
+
+}
+package first;
+
+public class Child extends ParentC {
+	int a = 20;
+	int c = a + 10;
+	 
+public static void main(String args[]) {
+	 Child ab=new Child();
+	 System.out.println(ab.a);
+	 System.out.println(ab.c*10);
+}
+
+}
+
